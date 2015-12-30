@@ -1,0 +1,15 @@
+{
+  "bitwise": true,
+  "forin": true,
+  "unused": true,
+  "undef": true,
+  "strict": true,
+  "browser": true,
+  "node": true,
+  "quotmark": "single",
+  "newcap": false,
+  "globals": {
+    "jQuery": false,
+    "toastr": false
+  }
+}

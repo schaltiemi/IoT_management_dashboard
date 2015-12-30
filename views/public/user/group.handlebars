@@ -1,0 +1,119 @@
+<div class="content-wrapper" style="min-height: 946px;">
+  <section class="content">
+
+    <div class="row">
+      <div class="col-md-4">
+
+        <!-- Profile Image -->
+        <div class="box box-primary">
+          <div class="box-body box-profile">
+
+            <ul class="list-group list-group-unbordered">
+              <li id="group-description" class="list-group-item" data-groupid={{group.[0]._id}}>
+                <b><span id="name-group">{{group.[0].name}}</span></b>
+                <a class="pull-right">
+                  <button id="rename-button-group" class="btn btn-default"><i class="fa fa-pencil"></i></button>
+                </a>
+              </li>
+              <li class="list-group-item">
+                <b>Number of devices</b> <a class="pull-right">{{group.[0].devices.length}}</a>
+              </li>
+              <li class="list-group-item">
+                {{#if group.[0].state}}
+                  <b>Status</b> <a class="pull-right"><span class="label label-primary">Active</span></a>
+                {{else}}
+                  <b>Status</b> <a class="pull-right"><span class="label label-danger">Inactive</span></a>
+                {{/if}}
+              </li>
+            </ul>
+            <a href="#" id="remove-group-button" class="btn btn-danger btn-block" data-groupid={{group.[0]._id}}>
+              <b>Remove Group</b></a>
+          </div><!-- /.box-body -->
+        </div><!-- /.box -->
+
+        <!-- About Me Box -->
+        <div class="box box-primary">
+
+        </div><!-- /.box -->
+      </div><!-- /.col -->
+      <div class="col-md-8">
+        <div class="nav-tabs-custom">
+          <ul class="nav nav-tabs">
+
+          </ul>
+          <div class="tab-content">
+            <div class="active tab-pane" id="activity">
+              <table class="table table-hover">
+                <tbody>
+                <tr>
+                  <td>
+                    <b>Activation</b>
+                  </td>
+                  <td>
+                    {{#if group.[0].state}}
+                      <input id="activation-button-group" type="checkbox" name="my-checkbox"
+                             class="activation-button-group"
+                             data-size="mini"
+                             checked>
+                    {{else}}
+                      <input id="activation-button-group" class="activation-button-group" type="checkbox"
+                             name="my-checkbox"
+                             data-size="mini">
+                    {{/if}}
+                  </td>
+              </table>
+              <div class="post">
+                <div class="box-body table-responsive no-padding">
+                  <table class="table table-hover">
+                    <tbody>
+                    <tr>
+                      <th>UID</th>
+                      <th>Name</th>
+                      <th>Status</th>
+                      <th></th>
+                    </tr>
+                    <tr>
+                      <ul class="list-group list-group-unbordered">
+                        <li class="list-group-item">
+                          <b>Add device to group</b>
+                          <a class="pull-right">
+                            <button class="btn btn-success" id="add-device-group"><i class="fa fa-plus"></i>
+                            </button>
+                          </a>
+                          <a class="pull-right"> <select id="choose-device" class="form-control">
+                            <option selected disabled>Choose one device</option>
+                            {{#each devices}}
+                              <option data-deviceid={{_id}}>{{name}}, {{uid}}</option>
+                            {{/each}}
+                          </select>
+                          </a>
+                        </li>
+                      </ul>
+                    </tr>
+                    {{#each group.[0].devices}}
+                      <tr>
+                        <td>{{uid}}</td>
+                        <td>{{name}}</td>
+                        {{#if state}}
+                          <td><span class="label label-primary">Active</span></td>
+                        {{else}}
+                          <td><span class="label label-danger">Inactive</span></td>
+                        {{/if}}
+                        <td>
+                          <button data-deviceID={{_id}} id="delete-device-group{{@index}}"
+                                  class="btn btn-box-tool delete-device-group"><i class="fa fa-times"></i></button>
+                        </td>
+                      </tr>
+                    {{/each}}
+                    </tbody>
+                  </table>
+                </div><!-- /.box-body -->
+              </div>
+            </div><!-- /.tab-pane -->
+          </div><!-- /.tab-content -->
+        </div><!-- /.nav-tabs-custom -->
+      </div><!-- /.col -->
+    </div><!-- /.row -->
+
+  </section>
+</div>

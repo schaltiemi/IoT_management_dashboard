@@ -1,0 +1,26 @@
+<aside class="main-sidebar">
+  <section class="sidebar" style="height: auto;">
+
+    <!-- sidebar menu: : style can be found in sidebar.less -->
+    <ul class="sidebar-menu">
+      {{#if user}}
+        <li><a href="/user/devices"><i class="fa fa-lightbulb-o text-yellow"></i> <span>Devices</span></a></li>
+        <li class="active treeview">
+          <a href="#">
+            <i class="fa fa-cubes"></i> <span>Groups</span> <i class="fa fa-angle-left pull-right"></i>
+          </a>
+          <ul class="treeview-menu">
+            <li><a>
+              <i id="add-group" class="fa fa-plus btn"></i>
+              <span style="color:black"><input id="new-group-name" placeholder="Add a new Group"></span>
+            </a></li>
+            {{#each groups}}
+            <li class="active"><a href="/user/group?group={{_id}}" class="group-index" data-groupID={{_id}}><i class="fa fa-cube"></i>{{name}}</a></li>
+            {{/each}}
+          </ul>
+        </li>
+        <li><a id="remove-user" href="#"><i class="fa fa-circle-o text-red"></i> <span>Remove User</span></a></li>
+      {{/if}}
+    </ul>
+  </section>
+</aside>

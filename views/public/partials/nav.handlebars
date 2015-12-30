@@ -1,0 +1,42 @@
+<header class="main-header">
+  <!-- Logo -->
+  <a href="/" class="logo">
+    <!-- mini logo for sidebar mini 50x50 pixels -->
+    <span class="logo-mini"><b>H</b>M</span>
+    <!-- logo for regular state and mobile devices -->
+    <span class="logo-lg"><b>Home</b>Made</span>
+  </a>
+
+  <nav class="navbar navbar-static-top" role="navigation">
+    <!-- Sidebar toggle button-->
+    <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+      <span class="sr-only">Toggle navigation</span>
+    </a>
+
+    <div id="buttons-nav" class="navbar-custom-menu">
+
+      {{#unless user}}
+        <ul class="nav navbar-nav">
+          <li>
+            <a href="/login" class="btn-success btn-lg">Login</a>
+          </li>
+          <!-- Tasks: style can be found in dropdown.less -->
+          <li>
+            <a href="/register" class="btn-success btn-lg">Register</a>
+          </li>
+        </ul>
+      {{else}}
+        <ul class="nav navbar-nav">
+          <li>
+            Welcome, {{user.pseudo}}
+
+          </li>
+          <!-- Tasks: style can be found in dropdown.less -->
+          <li>
+            <a href="/logout" class="btn-success btn-lg" id="logout-button">Logout</a>
+          </li>
+        </ul>
+      {{/unless}}
+    </div>
+  </nav>
+</header>
