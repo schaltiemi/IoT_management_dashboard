@@ -17,7 +17,6 @@ module.exports = function(passport) {
   });
 
   router.post('/createGroup', passport.ensureAuthenticated, function(req, res) {
-    console.log('aze');
     db.addGroupToUser(req.user.pseudo, req.body.groupName, function(err) {
       if (err) {
         res.send(err);

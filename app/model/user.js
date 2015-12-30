@@ -20,7 +20,6 @@ var user = {
   removeGroup: function(pseudo, groupID, done) {
     UserDB.findOne({pseudo: pseudo}, function(errUs, docUs) {
       GroupDB.findOneAndRemove({_id: groupID}, function(errGroup, docGroup) {
-        console.log(docGroup);
         docUs.groups.remove(docGroup.id);
         docUs.save(function(err, doc) {
           done(err, doc);
@@ -49,7 +48,6 @@ var user = {
   removeUser: function(pseudo, done) {
     UserDB.findOneAndRemove({pseudo: pseudo}, function(err, doc) {
       doc.devices.forEach(function(device) {
-        console.log(device);
         DeviceDB.remove({_id: device}, function(err) {
           if (err) {
             console.log(err);

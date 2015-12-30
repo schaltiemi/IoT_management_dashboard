@@ -7,7 +7,6 @@ var db = require('../../model/db_interface.js');
 module.exports = function(passport) {
 
   router.post('/register', function(req, res) {
-    console.log(req);
     db.addUser(req.body.pseudo, req.body.password, function(err) {
       if (err) {
         if (err.code === 11000) {

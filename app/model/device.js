@@ -5,7 +5,6 @@ var DeviceDB = db.device();
 
 var device = {
   addDevice: function(name, uid, done) {
-    console.log('function add device');
     var newDevice = new DeviceDB({
       name: name, uid: uid
     });

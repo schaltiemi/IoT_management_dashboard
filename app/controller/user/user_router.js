@@ -26,14 +26,10 @@ module.exports = function(passport) {
     var group = req.user.groups.filter(function(obj) {
       return obj._id == groupID;
     });
-    //console.log(group);
-    console.log(devices);
     group[0].state = true;
     group[0].devices.forEach(function(device) {
-      console.log("device of group " +device._id);
       devices = devices
           .filter(function(el) {
-            console.log(el._id);
             return el._id+'' !== device._id+'';
           });
       if (!device.state) {

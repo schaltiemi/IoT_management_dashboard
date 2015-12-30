@@ -37,7 +37,6 @@ module.exports = function(passport) {
 
   router.post('/addDeviceToGroup', passport.ensureAuthenticated, passport.isOwnerOfGroup, passport.isOwnerOfDevice,
       function(req, res) {
-        console.log('add device to group');
         db.addDeviceToGroup(req.body.groupID, req.body.deviceID, function(err) {
           if (err) {
             res.send(err);
@@ -49,7 +48,6 @@ module.exports = function(passport) {
 
   router.post('/removeDeviceFromGroup', passport.ensureAuthenticated, passport.isOwnerOfGroup, passport.isOwnerOfDevice,
       function(req, res) {
-        console.log('remove device from group');
         db.removeDeviceFromGroup(req.body.groupID, req.body.deviceID, function(err) {
           if (err) {
             res.send(err);

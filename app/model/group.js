@@ -6,7 +6,6 @@ var DeviceDB = db.device();
 
 var group = {
   addGroup: function(name, done) {
-    console.log('function add group');
     var newGroup = new GroupDB({
       name: name
     });
@@ -40,14 +39,10 @@ var group = {
       done(err, doc);
     });
   }, addDeviceToGroup: function(groupID, devID, done) {
-    console.log('bef ' + groupID + ' ' + devID);
     GroupDB.findByIdAndUpdate(groupID, {$addToSet: {devices: devID}}, function(err, doc) {
-      console.log('puk');
       if (err) {
-        console.log(err);
         done(err);
       } else {
-        console.log('BOUUUH');
         done(err, doc);
       }
     });
