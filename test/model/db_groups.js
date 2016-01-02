@@ -2,7 +2,6 @@
 /* globals describe, it, before, after */
 
 var should = require('should');
-var expect = require('expect.js');
 var mp = require('./model_preparer.js');
 var db = require('../../app/model/db_interface.js');
 
@@ -157,7 +156,7 @@ describe('DB Groups', function () {
     });
 
     it('activate group 2', function (done) {
-      db.activateGroup(mp.group2.id, function(err,doc){
+      db.activateGroup(mp.group2.id, function(err){
         should.not.exist(err);
         db.getDevice(mp.device1.id, function(err2, doc2){
           should(doc2.state).be.equal(true);
@@ -171,6 +170,7 @@ describe('DB Groups', function () {
       mp.preparers.chainPreparers([
         mp.preparers.rDeviceDB,
         mp.preparers.rUserDB,
+        mp.preparers.rGroupDB,
         mp.preparers.aUser2,
         mp.preparers.aDevice1,
         mp.preparers.aGroup2,

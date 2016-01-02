@@ -181,6 +181,7 @@ describe('Routing user services', function () {
       mp.preparers.chainPreparers([
         mp.preparers.rUserDB,
         mp.preparers.rGroupDB,
+        mp.preparers.rDeviceDB,
         mp.preparers.aUser2,
         mp.preparers.aUser3,
         mp.preparers.aGroup2,

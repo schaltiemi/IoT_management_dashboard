@@ -53,7 +53,7 @@ var mp = {
       });
     },
     aGroup1: function(nextArray) {
-      db.getUser(mp.user2.pseudo, function(err, doc) {
+      db.getUser(mp.user2.pseudo, function() {
         db.addGroupToUser(mp.user2.pseudo,mp.group1.name, function(err_g, doc_g) {
           mp.group1.id=doc_g.id;
           var next = nextArray.splice(0, 1)[0];
@@ -62,7 +62,7 @@ var mp = {
       });
     },
     aGroup2: function(nextArray) {
-      db.getUser(mp.user2.pseudo, function(err, doc) {
+      db.getUser(mp.user2.pseudo, function() {
         db.addGroupToUser(mp.user2.pseudo,mp.group2.name, function(err_g, doc_g) {
           mp.group2.id=doc_g._id;
           var next = nextArray.splice(0, 1)[0];
@@ -71,7 +71,7 @@ var mp = {
       });
     },
     aGroup3: function(nextArray) {
-      db.getUser(mp.user3.pseudo, function(err, doc) {
+      db.getUser(mp.user3.pseudo, function() {
         db.addGroupToUser(mp.user3.pseudo,mp.group3.name, function(err_g, doc_g) {
           mp.group3.id=doc_g.id;
           var next = nextArray.splice(0, 1)[0];
@@ -80,8 +80,8 @@ var mp = {
       });
     },
     aDevice1: function(nextArray) {
-      db.getUser(mp.user2.pseudo, function(err, doc) {
-        db.addDeviceToUser(mp.user2.pseudo,mp.device1.name, function(err, doc) {
+      db.getUser(mp.user2.pseudo, function() {
+        db.addDeviceToUser(mp.user2.pseudo,mp.device1.name,mp.device1.uid, function(err, doc) {
           mp.device1.id=doc.id;
           var next = nextArray.splice(0, 1)[0];
           next(nextArray);
@@ -89,8 +89,8 @@ var mp = {
       });
     },
     aDevice2: function(nextArray) {
-      db.getUser(mp.user2.pseudo, function(err, doc) {
-        db.addDeviceToUser(mp.user2.pseudo,mp.device2.name, function(err, doc) {
+      db.getUser(mp.user2.pseudo, function() {
+        db.addDeviceToUser(mp.user2.pseudo,mp.device2.name,mp.device2.uid, function(err, doc) {
           mp.device2.id=doc._id;
           var next = nextArray.splice(0, 1)[0];
           next(nextArray);
@@ -98,18 +98,9 @@ var mp = {
         });
       });
     },
-    aDevice3: function(nextArray) {
-      db.getUser(mp.user2.pseudo, function(err, doc) {
-        db.addDeviceToUser(mp.user2.pseudo,mp.device3.name, function(err, doc) {
-          mp.device3.id=doc.id;
-          var next = nextArray.splice(0, 1)[0];
-          next(nextArray);
-        });
-      });
-    },
     aDevice4: function(nextArray) {
-      db.getUser(mp.user3.pseudo, function(err_u, doc_u) {
-        db.addDeviceToUser(mp.user3.pseudo,mp.device4.name, function(err, doc) {
+      db.getUser(mp.user3.pseudo, function() {
+        db.addDeviceToUser(mp.user3.pseudo,mp.device4.name,mp.device4.uid, function(err, doc) {
           mp.device4.id=doc.id;
           var next = nextArray.splice(0, 1)[0];
           next(nextArray);
@@ -136,62 +127,8 @@ var mp = {
         next(nextArray);
       });
     },
-    aDevice3ToGroup2: function(nextArray) {
-      db.addDeviceToGroup(mp.group2.id, mp.device3.id, function(){
-        var next = nextArray.splice(0, 1)[0];
-        next(nextArray);
-      });
-    },
     aDevice4ToGroup3: function(nextArray) {
       db.addDeviceToGroup(mp.group3.id, mp.device4.id, function(){
-        var next = nextArray.splice(0, 1)[0];
-        next(nextArray);
-      });
-    },    //HOOOOOP ON EN EST LA
-    rDevice2FromGroup2: function(nextArray){
-      db.removeDeviceFromGroup(mp.group2.id, mp.device2.id, function(){
-        var next = nextArray.splice(0, 1)[0];
-        next(nextArray);
-      });
-    },
-    renameDevice1: function(nextArray){
-      db.renameDevice(mp.device1.id, 'corridor_lamp', function(){
-        var next = nextArray.splice(0, 1)[0];
-        next(nextArray);
-      });
-    },
-    renameGroup1: function(nextArray){
-      db.renameGroup(mp.group1.id, 'kids_rooms', function(){
-        var next = nextArray.splice(0, 1)[0];
-        next(nextArray);
-      });
-    },
-    removeDevice4FromUser3: function(nextArray){
-      db.removeDevice(mp.user3.pseudo, mp.device4.id, function(){
-        var next = nextArray.splice(0, 1)[0];
-        next(nextArray);
-      });
-    },
-    removeGroup1FromUser2: function(nextArray){
-      db.removeDevice(mp.user2.pseudo, mp.group1.name, function(){
-        var next = nextArray.splice(0, 1)[0];
-        next(nextArray);
-      });
-    },
-    desactivateUser3: function(nextArray){
-      db.desactivateUser(mp.user3.pseudo, function(){
-        var next = nextArray.splice(0, 1)[0];
-        next(nextArray);
-      });
-    },
-    activateUser3: function(nextArray){
-      db.activateUser(mp.user3.pseudo, function(){
-        var next = nextArray.splice(0, 1)[0];
-        next(nextArray);
-      });
-    },
-    rUser1: function(nextArray){
-      db.removeUser(mp.user1.pseudo, function(){
         var next = nextArray.splice(0, 1)[0];
         next(nextArray);
       });

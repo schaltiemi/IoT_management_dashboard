@@ -131,7 +131,8 @@ describe('Routing user services', function () {
 
     it('should add device', function (done) {
       agent_logged.post('/user/addDevice').send({
-        deviceName: cp.device2.name
+        deviceName: cp.device2.name,
+        deviceUid: cp.device2.uid
       }).end(function (err, res) {
         should.not.exist(err);
         res.should.have.status(200);
@@ -160,6 +161,7 @@ describe('Routing user services', function () {
     before(function (done) {
       mp.preparers.chainPreparers([
         mp.preparers.rUserDB,
+        mp.preparers.rDeviceDB,
         mp.preparers.aUser2,
         mp.preparers.aUser3,
         mp.preparers.aDevice2,

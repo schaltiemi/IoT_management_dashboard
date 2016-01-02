@@ -154,7 +154,7 @@ describe('DB Users', function () {
     });
 
     it('add device to user', function (done) {
-      db.addDeviceToUser(mp.user1.pseudo, mp.device1.name, function (e, d) {
+      db.addDeviceToUser(mp.user1.pseudo, mp.device1.name, mp.device1.uid, function (e, d) {
         should.not.exist(e);
         console.log(d.id);
         db.getDevice(d.id, function (err, doc) {
@@ -212,13 +212,12 @@ describe('DB Users', function () {
       ]);
     });
 
-    it('remove group from user', function (done) { //TEST NON COMPLET A FINIR, check que le device est delete et
-      //que user n'a plus de device
+    it('remove group from user', function (done) {
       db.removeGroup(mp.user2.pseudo, mp.group2.id, function (e, d) {
         should.not.exist(e);
         console.log(d);
         should(d.groups.length).be.equal(0);
-        db.getUser(mp.user2.name, function (err, doc) {
+        db.getUser(mp.user2.name, function () {
           done();
         });
       });
@@ -244,7 +243,7 @@ describe('DB Users', function () {
         should.not.exist(e);
         console.log(d);
         should(d.devices.length).be.equal(0);
-        db.getUser(mp.user2, function (err, doc) {
+        db.getUser(mp.user2, function () {
           done();
         });
       });

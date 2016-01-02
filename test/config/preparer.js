@@ -21,17 +21,21 @@ var config = {
     name: 'bureau'
   },
   device1:{
-    name:'lampe_couloir'
+    name:'lampe_couloir',
+    uid: '111134'
   },
   device2:{
     name:'lampe_chambre_1',
+    uid: '111135',
     id : 5
   },
   device3:{
-    name:'lampe_chambre_2'
+    name:'lampe_chambre_2',
+    uid: '111136'
   },
   device4:{
-    name:'lampe_bureau'
+    name:'lampe_bureau',
+    uid: '111137'
   }
 };
 
